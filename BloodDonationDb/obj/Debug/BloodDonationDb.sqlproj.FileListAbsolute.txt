@@ -1,0 +1,5 @@
+C:\Users\Hasan\Desktop\project\BloodDonation\BloodDonationDb\bin\Debug\BloodDonationDb.dacpac
+C:\Users\Hasan\Desktop\project\BloodDonation\BloodDonationDb\bin\Debug\BloodDonationDb.dll
+C:\Users\Hasan\Desktop\project\BloodDonation\BloodDonationDb\bin\Debug\BloodDonationDb.pdb
+C:\Users\Hasan\Desktop\project\BloodDonation\BloodDonationDb\obj\Debug\BloodDonationDb.dll
+C:\Users\Hasan\Desktop\project\BloodDonation\BloodDonationDb\obj\Debug\BloodDonationDb.pdb

@@ -1,0 +1,57 @@
+<ion-view ng-controller="MyCtrl">
+    <ion-nav-bar class="bar-dark">
+        <h1 class="title padding-top">Blood Donation System</h1>
+    </ion-nav-bar>
+    <!--Content home page-->
+    <ion-content class="top-padding-60">
+        <ion-list class="padding  ">
+            <div ng-repeat="group in groups">
+                <ion-item class="item-assertive" ng-click="toggleGroup(group)" ng-class="{active:isGroupShown(group)}">
+                    <div class="row">
+                        <div class="col">
+                            <h1>O+</h1>
+                        </div>
+                        <div class="col col-center">
+                            <h2 class="list-h2">5 Units</h2>
+                        </div>
+                    </div>
+                </ion-item>
+                <ion-item class="item-accordion" ng-repeat="item in group.items" ng-show="isGroupShown(group)">
+
+                    <div class="row row">
+                        <div class="col">
+
+                            since 7 minutes
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="title">
+                                <b>al rasol Hospital</b>
+                            </h2>
+                            <h3>nabtieh - arabsalim</h3>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <a ui-sref="register">
+                                <button class="button-stable icon ion-thumbsup">Yes, I Donate</button>
+                            </a>
+
+
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col text-center">
+                            <h2 class="title">
+                                4/5
+                                <icon class="ion-battery-half"></icon>
+                            </h2>
+                        </div>
+                    </div>
+
+                </ion-item>
+            </div>
+        </ion-list>
+    </ion-content>
+</ion-view>
