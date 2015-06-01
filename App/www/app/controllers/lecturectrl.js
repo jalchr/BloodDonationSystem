@@ -1,6 +1,7 @@
 (function () {
     'use strict';
     angular.module('eliteApp').controller('lecturectrl', ['$scope', '$stateParams', 'apictrl', '$sce', lecturectrl]);
+
     function lecturectrl($scope, $stateParams, apictrl, $sce) {
         var vm = this;
         //vm.localhost = "http://Dev-010:59454";

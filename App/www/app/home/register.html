@@ -1,10 +1,10 @@
-﻿<ion-view>
+﻿<ion-view ng-controller="RegisterCtrl">
     <ion-nav-bar class="bar-energized">
         <h1 class="title padding-top">Register</h1>
     </ion-nav-bar>
-<!--content register page-->
-    <ion-content >
-   
+    <!--content register page-->
+    <ion-content>
+
         <div class="row top-padding-72">
             <div class="col col-center">
 
@@ -15,10 +15,10 @@
                         </p>
                     </label>
                     <label class="item item-input">
-                        <input type="text" placeholder="Name">
+                        <input type="text" ng-model="user.MName" placeholder="Name">
                     </label>
                     <label class="item item-input">
-                        <input type="text" placeholder="Phone Number">
+                        <input type="text" ng-model="user.PhoneNum" placeholder="Phone Number">
                     </label>
                     <label class="item item-input item-select">
                         <div class="input-label">
@@ -37,8 +37,10 @@
                         </select>
                     </label>
                 </div>
-                <button class="button button-block button-calm text-center">Agree</button>
+                <button class="button button-block button-calm text-center" ng-click="submit()">Agree</button>
             </div>
+            <toaster-container toaster-options="{'position-class': 'toast-top-left'}"></toaster-container>
+
         </div>
     </ion-content>
 </ion-view>

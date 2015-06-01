@@ -88,15 +88,19 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DbRepository.cs" />
     <Compile Include="Repository\IArticlesRepository.cs" />
+    <Compile Include="Repository\IBloodRequestRepository.cs" />
     <Compile Include="Repository\ILecturesRepository.cs" />
     <Compile Include="Repository\ILoginRepository.cs" />
     <Compile Include="Repository\Imp\ArticlesRepository.cs" />
+    <Compile Include="Repository\Imp\BloodRequestRepository.cs" />
     <Compile Include="Repository\Imp\LecturesRepository.cs" />
     <Compile Include="Repository\Imp\LoginRepository.cs" />
     <Compile Include="Repository\Imp\NewsRepository.cs" />
     <Compile Include="Repository\Imp\PushRepository.cs" />
+    <Compile Include="Repository\Imp\RegisterRepository.cs" />
     <Compile Include="Repository\INewsRepository.cs" />
     <Compile Include="Repository\IPushRepository.cs" />
+    <Compile Include="Repository\IRegisterRepository.cs" />
     <Compile Include="Resources\Shared.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>

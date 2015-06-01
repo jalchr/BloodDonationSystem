@@ -6,12 +6,14 @@
         DSCacheFactory("MessagedispCache", { storageMode: "localStorage", maxAge: 5000000, deleteOnExpire: "aggressive" });
         DSCacheFactory("LecturesCache", { storageMode: "localStorage", maxAge: 5000000, deleteOnExpire: "aggressive" });
         DSCacheFactory("LecturedispCache", { storageMode: "localStorage", maxAge: 5000000, deleteOnExpire: "aggressive" });
+        DSCacheFactory("BloodRequestCache", { storageMode: "localStorage", maxAge: 5000000, deleteOnExpire: "aggressive" });
 
         self.MessagesCache = DSCacheFactory.get("MessagesCache");
         self.MessagedispCache = DSCacheFactory.get("MessagedispCache");
         self.LecturesCache = DSCacheFactory.get("LecturesCache");
         self.LecturedispCache = DSCacheFactory.get("LecturedispCache");
         self.staticCache = DSCacheFactory.get("staticCache");
+        self.BloodRequestCache = DSCacheFactory.get("BloodRequestCache");
 
         // ===============================================
         self.MessagesCache.setOptions({
@@ -22,6 +24,19 @@
                 }, function () {
                     console.log("Error getting data putting expire data item back into the messagescache");
                     self.MessagesCache.put(key, value);
+                });
+            }
+        });
+        //    ===============================================
+        // ===============================================
+        self.BloodRequestCache.setOptions({
+            onExpire: function (key, value) {
+
+                getrqust().then(function () {
+                    console.log("BloodRequest cache was  refreshed");
+                }, function () {
+                    console.log("Error getting data putting expire data item back into the messagescache");
+                    self.BloodRequestCache.put(key, value);
                 });
             }
         });
@@ -67,7 +82,7 @@
         // ===============================================================
 
         var vm = this;
-        var local = "http://Hasan-PC:59454/api/";
+        var local = "http://Hasan-PC:17967/api/";
         var online = "";
 
         function getmsgs(forceRefresh) {
@@ -101,6 +116,40 @@
             }
             return deferred.promise;
         }
+
+        /*---BloodRequestGetData---*/
+        function  getrqust(forceRefresh) {
+            if (typeof forceRefresh === "undefined") { forceRefresh = false; }
+            var cacheKey = "BloodRequest";
+            var requestdata = null;
+            var deferred = $q.defer();
+            if (!forceRefresh) {
+                var requestdata = self.BloodRequestCache.get(cacheKey);
+            };
+
+            if (requestdata) {
+                console.log("found data inside the cache", requestdata);
+                deferred.resolve(requestdata);
+            }
+            else {
+                $ionicLoading.show({
+                    template: '...Loading'
+                });
+                $http.get(local + "BloodRequest/Getall").success(function (data) {
+                    self.BloodRequestCache.put(cacheKey, data);
+                    $ionicLoading.hide();
+                    deferred.resolve(data);
+                    console.log("received rqustdata via http", data, status);
+                })
+                .error(function () {
+                    $ionicLoading.hide();
+                    console.log("error http mhd");
+                    deferred.reject();
+                });
+            }
+            return deferred.promise;
+        }
+        /*---EndBloodRequestGetData---*/
 
         function getmsgdis() {
             vm.num = $stateParams.id;
@@ -179,8 +228,7 @@
             });
             return deferred.promise;
         }
-
-
+      
         //----------------<push notification>-------------------------------------------------------------------
         function postdeviceinfo(device) {
             //alert(device);
@@ -193,12 +241,25 @@
               console.log("error post device info");
           });
         }
+        function postMemberinfo(member) {
+            //alert(device);
+            $http.post(local + "Register/InsertRegister", member).
+           success(function (mName, phoneNum, mBloodType, date) {
+               console.log(" member info post ok");
+           }).
+
+          error(function (mName, phoneNum, mBloodType, date) {
+              console.log("error post device info");
+          });
+        }
         return {
             getmsgs: getmsgs,
             getmsgdis: getmsgdis,
             getlectures: getlectures,
             getlecture: getlecture,
-            postdeviceinfo: postdeviceinfo
+            postdeviceinfo: postdeviceinfo,
+            postMemberinfo: postMemberinfo,
+            getrqust: getrqust
         };
     };
 })();

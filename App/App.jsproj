@@ -110,6 +110,7 @@
     <VisualStudioVersion>12.0</VisualStudioVersion>
   </PropertyGroup>
   <ItemGroup>
+    <Content Include="Content\pic\Blood_646x300.jpg" />
     <Content Include="ng-cordova\.bowerrc" />
     <Content Include="ng-cordova\.editorconfig" />
     <Content Include="ng-cordova\.gitignore" />
@@ -526,16 +527,22 @@
     <Content Include="ng-cordova\test\plugins\touchid.spec.js" />
     <Content Include="ng-cordova\test\plugins\vibration.spec.js" />
     <Content Include="ng-cordova\test\plugins\zip.spec.js" />
+    <Content Include="scripts\moment-with-locales.js" />
+    <Content Include="scripts\moment-with-locales.min.js" />
+    <Content Include="scripts\moment.js" />
+    <Content Include="scripts\moment.min.js" />
     <Content Include="www\.gitignore" />
     <Content Include="www\app\app.js" />
     <Content Include="www\app\controllers\apictrl.js" />
     <Content Include="www\app\controllers\apppiii.js" />
+    <Content Include="www\app\controllers\BloodRequestCtrl.js" />
     <Content Include="www\app\controllers\ionicaccordion.js" />
     <Content Include="www\app\controllers\lecturectrl.js" />
     <Content Include="www\app\controllers\location-map.js" />
     <Content Include="www\app\controllers\newsctrl.js" />
     <Content Include="www\app\controllers\newsdisplayctrl.js" />
     <Content Include="www\app\controllers\PushNotification.js" />
+    <Content Include="www\app\controllers\RegisterCtrl.js" />
     <Content Include="www\app\controllers\Request-Ctrl.js" />
     <Content Include="www\app\controllers\testjava.js" />
     <Content Include="www\app\controllers\videogularctrl.js" />

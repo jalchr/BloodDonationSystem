@@ -26,7 +26,6 @@ namespace Infrastructure.Repository.Imp
           {
               News[] tab = cnn.GetList<News>().OrderByDescending(x => x.Date).ToArray(); ;
               return tab;
-
           }
       }
 

@@ -8,7 +8,7 @@
         function getmsgs() {
             var deferred = $q.defer();
             $ionicLoading.show({ template: "Loading..." });
-            $http.get("http://localhost:59454/api/Messages").success(function (data) {
+            $http.get("http://Hasan-PC:17967/api/Messages").success(function (data) {
 
                 $timeout(function () {
                     $ionicLoading.hide();
@@ -28,7 +28,7 @@
         function getmsgdis() {
             $ionicLoading.show({ template: "Loading..." });
             var deferred = $q.defer();
-            $http.get("http://localhost:59454/api/Messages/" + vm.num + "").success(function (data) {
+            $http.get("http://Hasan-PC:17967/api/Messages/" + vm.num + "").success(function (data) {
 
                 $timeout(function () {
                     $ionicLoading.hide();
@@ -51,7 +51,7 @@
             $ionicLoading.show({ template: "Loading..." });
 
             var deferred = $q.defer();
-            $http.get("http://localhost:59454/api/Values").success(function (data) {
+            $http.get("http://Hasan-PC:17967/api/Values").success(function (data) {
 
                 $timeout(function () {
                     $ionicLoading.hide();

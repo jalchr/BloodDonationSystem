@@ -1,14 +1,19 @@
-angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory","ngCordova"])
-
+angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "ngCordova"])
+    .filter('fromNow', function () {
+        return function (date) {
+            return moment(date).fromNow();
+        }
+    })
 /*--Shrinkheader--*/
-.directive("fakeStatusbar", function () {
-    return {
-        restrict: 'E',
-        replace: true,
-        template: '<div class="fake-statusbar"><div class="pull-left">Carrier</div><div class="time">3:30 PM</div><div class="pull-right">50%</div></div>'
-    }
-})
-.directive("headerShrink", function ($document) {
+
+    .directive('fakeStatusbar', function () {
+        return {
+            restrict: 'E',
+            replace: true,
+            template: '<div class="fake-statusbar"><div class="pull-left">Carrier</div><div class="time">3:30 PM</div><div class="pull-right">50%</div></div>'
+        }
+    })
+.directive('headerShrink', function ($document) {
     var fadeAmt;
 
     var shrink = function (header, content, amt, max) {
@@ -50,38 +55,6 @@ angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory","ngCordova"])
     }
 })
 
-/*----------------Accordion------------*/
-.controller("MyCtrl", function ($scope) {
-    $scope.groups = [];
-    for (var i = 0; i < 3; i++) {
-        $scope.groups[i] = {
-            name: i,
-            items: []
-        }
-        for (var j = 0; j < 1; j++) {
-            $scope.groups[i].items.push(i + '-' + j);
-        }
-    }
-
-    /*
-     * if given group is the selected group, deselect it
-     * else, select the given group
-     */
-    $scope.toggleGroup = function (group) {
-        if ($scope.isGroupShown(group)) {
-            $scope.shownGroup = null;
-        } else {
-            $scope.shownGroup = group;
-        }
-    }
-    $scope.isGroupShown = function (group) {
-        return $scope.shownGroup === group;
-    }
-        
-
-})
-
-
 
 
 .run(function ($ionicPlatform, DSCacheFactory, $cordovaPush, $cordovaDialogs, $rootScope, $http, $cordovaDevice, apictrl) {
@@ -110,7 +83,7 @@ angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory","ngCordova"])
                     senderID: "774696930133",
                     ecb: "window.onNotificationGCM"
                 });
-        } 
+        }
         else if (ionic.Platform.isIOS()) {
             pushNotification.register(
               successHandler,
@@ -258,37 +231,37 @@ angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory","ngCordova"])
 
 .config(function ($stateProvider, $urlRouterProvider) {
 
-        $stateProvider
-            .state('home', {
-                url: "/home",
-                templateUrl: "www/app/home/home.html"
+    $stateProvider
+        .state('home', {
+            url: "/home",
+            templateUrl: "www/app/home/home.html"
 
 
-            })
-            .state('register', {
-                url: "/register",
-                templateUrl: "www/app/home/register.html"
-            });
-        /*.state('home.mainpage', {
-            url: "/mainpage",
-            templateUrl: "www/app/home/mainpage.html"
         })
-        .state('home.lecture', {
-            url: "/lectures",
-            templateUrl: "www/app/home/lecture.html"
-        })
-        .state('home.news', {
-            url: "/news",
-            templateUrl: "www/app/home/news.html"
-        })
-        .state('home.newsdisplay', {
-            url: "/news/:id",
-            templateUrl: "www/app/home/newsdisplay.html"
-        })
-        .state('home.viewlecture', {
-            url: "/lecture/:id",
-            templateUrl: "www/app/home/viewlecture.html"
-        });*/
+        .state('register', {
+            url: "/register",
+            templateUrl: "www/app/home/register.html"
+        });
+    /*.state('home.mainpage', {
+        url: "/mainpage",
+        templateUrl: "www/app/home/mainpage.html"
+    })
+    .state('home.lecture', {
+        url: "/lectures",
+        templateUrl: "www/app/home/lecture.html"
+    })
+    .state('home.news', {
+        url: "/news",
+        templateUrl: "www/app/home/news.html"
+    })
+    .state('home.newsdisplay', {
+        url: "/news/:id",
+        templateUrl: "www/app/home/newsdisplay.html"
+    })
+    .state('home.viewlecture', {
+        url: "/lecture/:id",
+        templateUrl: "www/app/home/viewlecture.html"
+    });*/
 
     // if none of the above states are matched, use this as the fallback
     $urlRouterProvider.otherwise('/home');

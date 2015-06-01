@@ -188,6 +188,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="CMS\login.html" />
+    <Content Include="CMS\loginController.js" />
+    <Content Include="CMS\Requests.html" />
     <Content Include="Index.html" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
@@ -197,6 +200,8 @@
     <Content Include="Content\videogular.css" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
+    <Content Include="member-hospital.html" />
+    <Content Include="member-main.html" />
     <Content Include="Scripts\angular-mocks.js" />
     <Content Include="Scripts\angular-sanitize.js" />
     <Content Include="Scripts\angular-sanitize.min.js" />
@@ -3143,10 +3148,12 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\ArticlesController.cs" />
+    <Compile Include="Controllers\BloodRequestController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MessagesController.cs" />
     <Compile Include="Controllers\NotificationTestController.cs" />
     <Compile Include="Controllers\PushController.cs" />
+    <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Controllers\UploaderController.cs" />
     <Compile Include="Controllers\UploadermvcController.cs" />
     <Compile Include="Controllers\LecturesController.cs" />
@@ -3154,6 +3161,9 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticlesForm.cs" />
+    <Compile Include="Models\Mappers\Imp\RegisterMapper.cs" />
+    <Compile Include="Models\Mappers\IRegisterMapper.cs" />
+    <Compile Include="Models\RegisterForm.cs" />
     <Compile Include="Models\LecturesForm.cs" />
     <Compile Include="Models\Loginform.cs" />
     <Compile Include="Models\Mappers\ILecturesMapper.cs" />

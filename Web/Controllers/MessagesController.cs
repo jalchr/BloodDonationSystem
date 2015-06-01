@@ -33,6 +33,9 @@ namespace Web.Controllers
 
             return news;
         }
+
+
+
         [HttpGet]
         // GET api/default1/5
         public IHttpActionResult  Getnew(int id)
