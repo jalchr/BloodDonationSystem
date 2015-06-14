@@ -5,6 +5,6 @@
     <ReferenceCachePath>C:\Users\Hasan\AppData\Local\Temp\vlekdkt4_App_refcache</ReferenceCachePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
-    <DebuggerFlavor>RippleNexusS</DebuggerFlavor>
+    <DebuggerFlavor>RippleNexus</DebuggerFlavor>
   </PropertyGroup>
 </Project>

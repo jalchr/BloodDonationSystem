@@ -527,6 +527,12 @@
     <Content Include="ng-cordova\test\plugins\touchid.spec.js" />
     <Content Include="ng-cordova\test\plugins\vibration.spec.js" />
     <Content Include="ng-cordova\test\plugins\zip.spec.js" />
+    <Content Include="res\icons\android\icon-36-ldpi.png" />
+    <Content Include="res\icons\android\icon-48-mdpi.png" />
+    <Content Include="res\icons\android\icon-72-hdpi.png" />
+    <Content Include="res\icons\android\icon-96-xhdpi.png" />
+    <Content Include="scripts\angularnotification\toaster.min.css" />
+    <Content Include="scripts\angularnotification\toaster.min.js" />
     <Content Include="scripts\moment-with-locales.js" />
     <Content Include="scripts\moment-with-locales.min.js" />
     <Content Include="scripts\moment.js" />
@@ -972,6 +978,9 @@
     <Content Include="www\lib\angular-cache\LICENSE" />
     <Content Include="www\lib\angular-cache\README.md" />
     <Content Include="www\lib\angular-cache\TRANSITION.md" />
+    <Content Include="www\lib\angular-route\angular-route.js" />
+    <Content Include="www\lib\angular-route\angular-route.min.js" />
+    <Content Include="www\lib\angular-route\angular-route.min.js.map" />
     <Content Include="www\lib\angular-sanitize\.bower.json" />
     <Content Include="www\lib\angular-sanitize\angular-sanitize.js" />
     <Content Include="www\lib\angular-sanitize\angular-sanitize.min.js" />
@@ -1114,7 +1123,6 @@
     <Content Include="merges\windows\scripts\platformOverrides.js" />
     <Content Include="merges\windows\scripts\winstore-jscompat.js" />
     <Folder Include="merges\wp8\" />
-    <Folder Include="res\icons\android\" />
     <Folder Include="res\icons\ios\" />
     <Folder Include="res\icons\wp8\" />
     <Folder Include="res\icons\windows\" />
@@ -1401,10 +1409,6 @@
     <Content Include="scripts\index.js" />
     <Content Include="scripts\platformOverrides.js" />
     <Content Include="css\index.css" />
-    <Content Include="res\icons\android\icon-36-ldpi.png" />
-    <Content Include="res\icons\android\icon-48-mdpi.png" />
-    <Content Include="res\icons\android\icon-72-hdpi.png" />
-    <Content Include="res\icons\android\icon-96-xhdpi.png" />
     <Content Include="res\icons\ios\icon-40.png" />
     <Content Include="res\icons\ios\icon-40-2x.png" />
     <Content Include="res\icons\ios\icon-50.png" />

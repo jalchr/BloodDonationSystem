@@ -63,9 +63,12 @@
     <Build Include="Lectures.sql" />
     <Build Include="News.sql" />
     <Build Include="Push.sql" />
-    <Build Include="BloodRequest.sql" />
     <Build Include="Users.sql" />
     <Build Include="MemberRegister.sql" />
+    <Build Include="BloodRequest.sql" />
+  </ItemGroup>
+  <ItemGroup>
+    <PostDeploy Include="Script.PostDeployment1.sql" />
   </ItemGroup>
   <ItemGroup>
     <RefactorLog Include="BloodDonationDb.refactorlog" />
