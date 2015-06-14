@@ -3,7 +3,7 @@
         <h1 class="title padding-top">Blood Donation System</h1>
     </ion-nav-bar>
     <!--Content home page-->
-    <ion-content header-shrink scroll-event-interval="5" class="top-padding-60">
+    <ion-content class="top-padding-60">
         <ion-refresher pulling-text="Pull to refresh..."
                        on-refresh="vm.loadList(true)">
         </ion-refresher>
@@ -12,8 +12,7 @@
             <div ng-repeat="group in vm.bloodRequest">
                 <ion-item class="item-assertive" ng-click="toggleGroup(group)" ng-class="{active:isGroupShown(group)}">
                     <div class="row">
-                        <div class="col">
-                            <!--<h1>O+</h1>-->
+                        <div class="col">                      
                             {{group.BloodType}}
                         </div>
                         <div class="col col-center">
@@ -23,7 +22,6 @@
                     <div ng-show="isGroupShown(group)">
                         <div class="row row">
                             <div class="col">
-
                                 {{group.Date | fromNow}}
                             </div>
                         </div>
@@ -37,8 +35,8 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <a ui-sref="register">
-                                    <button class="button-stable icon ion-thumbsup">Yes, I Donate</button>
+                                <a href="#/register/{{group.Id}}">
+                                    <button class="button button-light icon ion-thumbsup">Yes, I Donate</button>
                                 </a>
                             </div>
                         </div>
@@ -50,7 +48,6 @@
                                 </h2>
                             </div>
                         </div>
-
                     </div>
                 </ion-item>
             </div>

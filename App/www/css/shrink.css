@@ -21,10 +21,10 @@
 .fake-statusbar .pull-right { float: right; }
 
 .bar-header {
-  height: 64px !important;
+  height: 45px !important;
 }
 .bar-header > * {
-  margin-top: 20px !important;
+  margin-top: 5px !important;
 }
 
 .scroll-content{

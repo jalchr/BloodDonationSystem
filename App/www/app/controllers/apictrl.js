@@ -137,7 +137,7 @@
                 });
                 $http.get(local + "BloodRequest/Getall").success(function (data) {
                     self.BloodRequestCache.put(cacheKey, data);
-                    $ionicLoading.hide();
+/**/                    $ionicLoading.hide();
                     deferred.resolve(data);
                     console.log("received rqustdata via http", data, status);
                 })
@@ -241,24 +241,13 @@
               console.log("error post device info");
           });
         }
-        function postMemberinfo(member) {
-            //alert(device);
-            $http.post(local + "Register/InsertRegister", member).
-           success(function (mName, phoneNum, mBloodType, date) {
-               console.log(" member info post ok");
-           }).
 
-          error(function (mName, phoneNum, mBloodType, date) {
-              console.log("error post device info");
-          });
-        }
         return {
             getmsgs: getmsgs,
             getmsgdis: getmsgdis,
             getlectures: getlectures,
             getlecture: getlecture,
             postdeviceinfo: postdeviceinfo,
-            postMemberinfo: postMemberinfo,
             getrqust: getrqust
         };
     };

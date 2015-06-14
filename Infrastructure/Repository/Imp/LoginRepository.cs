@@ -10,25 +10,16 @@ namespace Infrastructure.Repository.Imp
 {
     public class LoginRepository : DbRepository, ILoginRepository
     {
-        public Boolean Verification(Users us)
+        public Users Verification(Users user)
         {
-           
-        
-
             using (var cnn = OpenConnection())
             {
-                string query = "select * from Users where Username=@Username and Password =@Password";
-                var resultat = cnn.Query<Users>(query, new { Username = us.Username, Password = us.Password });
-                //var resultat = cnn.Query<Users>("select Username = @Username, Password = @Password", new { Username = us.Username, Password = us.Password });
-                if (resultat.Count() == 0)
-                {
-                    return false;
-                }
-                else { return true; }
-                
-            }
-        
+                var query = "select * from Users where Username=@Username and Password =@Password";
 
+                var result = cnn.Query<Users>(query, new { Username = user.UserName, Password = user.Password });
+
+                return result.FirstOrDefault();
+            }
         }
     }
 }

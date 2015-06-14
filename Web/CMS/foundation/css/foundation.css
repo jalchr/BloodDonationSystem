@@ -6189,3 +6189,16 @@ th.hide-for-touch {
 
   th.show-for-print {
     display: table-cell !important; } }
+.top-margin-col {
+    margin-top: 70px;
+}
+.top-margin-col1 {
+    margin-top: 20px;
+}
+.top-padding-col2 {
+    padding-top: 50px;
+}
+.right-padding-col {
+    padding-left: 50px;
+}
+

@@ -1,4 +1,6 @@
-﻿using System.Web.Http;
+﻿using System.Collections.Generic;
+using System.Web.Http;
+using Core.Models;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Imp;
 using Web.Models;
@@ -9,42 +11,65 @@ namespace Web.Controllers
 {
     public class LoginController : ApiController
     {
-           private ILoginRepository _loginRepository;
+        private ILoginRepository _loginRepository;
         private ILoginMapper _loginMapper;
+        private IAddUserRepository _addUserRepository;
+        private IAddUserMapper _addUserMapper;
+
         public LoginController()
         {
             _loginRepository = new LoginRepository();
             _loginMapper = new LoginMapper();
+            _addUserRepository = new AddUserRepository();
+            _addUserMapper = new AddUserMapper();
         }
 
         // GET: api/Login
         [HttpPost]
-        public bool Verif([FromBody] Loginform form)
+        public Users Verif([FromBody] Loginform form)
         {
-            var us = _loginMapper.Map(form);
-            var res = _loginRepository.Verification(us);
-            return res;
+            var map = _loginMapper.Map(form);
+            var user = _loginRepository.Verification(map);
+            return user;
         }
 
-        // GET: api/Login/5
-        //public Boolean Get([FromBody]Loginform form)
-        //{
-        //    return true;
-        //}
-
-        // POST: api/Login
-        public void Post([FromBody]string value)
+        [HttpPost]
+        public void RegisterUser([FromBody]CreateUserForm user)
         {
+            var map = _addUserMapper.Map(user);
+            _addUserRepository.InsertUser(map);
         }
 
-        // PUT: api/Login/5
-        public void Put(int id, [FromBody]string value)
+        [HttpGet]
+        public IHttpActionResult GetUser(int id)
         {
+            var user = _addUserRepository.GetUser(id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            return Ok(user);
         }
 
-        // DELETE: api/Login/5
-        public void Delete(int id)
+        [HttpPut]
+        public void EditUser([FromUri] int id, [FromBody] CreateUserForm user)
         {
+
+            var map = _addUserMapper.Map(id, user);
+
+            _addUserRepository.UpdateUser(map);
+
+        }
+
+        public IEnumerable<Users> Getall()
+        {
+            var users = _addUserRepository.GetAll();
+            return users;
+        }
+
+        public void DeleteUser([FromUri] int id)
+        {
+            _addUserRepository.DeleteUser(id);
         }
     }
 }

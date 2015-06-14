@@ -2807,12 +2807,12 @@ a.subdued {
       color: #fff; }
   .bar .title {
     position: absolute;
-    top: 0;
+    top: 1px;
     right: 0;
     left: 0;
     z-index: 0;
     overflow: hidden;
-    margin: 0 10px;
+    margin: 6px 10px;
     min-width: 30px;
     height: 43px;
     text-align: center;

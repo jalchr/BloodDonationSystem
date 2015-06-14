@@ -87,10 +87,12 @@
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\DbRepository.cs" />
+    <Compile Include="Repository\IAddUserRepository.cs" />
     <Compile Include="Repository\IArticlesRepository.cs" />
     <Compile Include="Repository\IBloodRequestRepository.cs" />
     <Compile Include="Repository\ILecturesRepository.cs" />
     <Compile Include="Repository\ILoginRepository.cs" />
+    <Compile Include="Repository\Imp\AddUserRepository.cs" />
     <Compile Include="Repository\Imp\ArticlesRepository.cs" />
     <Compile Include="Repository\Imp\BloodRequestRepository.cs" />
     <Compile Include="Repository\Imp\LecturesRepository.cs" />

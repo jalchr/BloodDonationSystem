@@ -9,7 +9,6 @@ namespace Web.Models
     {
         public RegisterForm()
         {
-            Id = 1;
             Date = DateTime.Now;
         }
         public string MName { get; set; }

@@ -4,6 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using Core.Models;
 using Infrastructure.Repository;
 using Infrastructure.Repository.Imp;
@@ -13,6 +14,7 @@ using Web.Models.Mappers.Imp;
 
 namespace Web.Controllers
 {
+      [EnableCors(origins: "http://Hasan-PC:17967", headers: "*", methods: "*")]
     public class RegisterController : ApiController
     {
         private IRegisterRepository _registerRepository;
@@ -58,26 +60,17 @@ namespace Web.Controllers
             return Ok(register);
         }
         // POST api/default1
-
-
         [HttpPost]
-        [ActionName("Forminfo")]
-        public void Forminfo(RegisterForm form)
+        public void RegisterMember([FromBody]RegisterForm user)
         {
-            var map = _registerMapper.Map(form);
+            var map = _registerMapper.Map(user);
             _registerRepository.InsertRegister(map);
         }
-
-        //[HttpPost]
-        //[ActionName("Deletenews")]
-
 
         public void Deletenews([FromUri] int id)
         {
             _registerRepository.DeleteRegister(id);
         }
-        // PUT api/default1/5
-
 
         [HttpPut]
         public void Editnew([FromUri] int id, [FromBody] RegisterForm form)

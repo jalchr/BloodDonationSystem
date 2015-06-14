@@ -1,46 +1,42 @@
 ﻿<ion-view ng-controller="RegisterCtrl">
-    <ion-nav-bar class="bar-energized">
-        <h1 class="title padding-top">Register</h1>
-    </ion-nav-bar>
+    <ion-nav-bar class="bar-dark">
+        <button class="button  button-clear icon ion-arrow-left-c" ng-click="GetPreviousPage()"></button>
+        <h1 class="title padding-top">Blood Donation System</h1>    
+     </ion-nav-bar>
+    <div class="bar bar-subheader bar-stable">
+        <h2 class="title">
+            Register
+        </h2>
+    </div>
     <!--content register page-->
-    <ion-content>
-
-        <div class="row top-padding-72">
-            <div class="col col-center">
-
-                <div class="list padding">
-                    <label>
-                        <p>
-                            I donate an <b>O+</b> unit of blood
-                        </p>
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" ng-model="user.MName" placeholder="Name">
-                    </label>
-                    <label class="item item-input">
-                        <input type="text" ng-model="user.PhoneNum" placeholder="Phone Number">
-                    </label>
-                    <label class="item item-input item-select">
-                        <div class="input-label">
-                            Blood Type<b>*</b>
-                        </div>
-                        <select class="text-center">
-                            <option>O+</option>
-                            <option>A+</option>
-                            <option>B+</option>
-                            <option>AB+</option>
-                            <option selected disabled="disabled">--Type--</option>
-                            <option>O-</option>
-                            <option>A-</option>
-                            <option>B-</option>
-                            <option>AB-</option>
-                        </select>
-                    </label>
-                </div>
-                <button class="button button-block button-calm text-center" ng-click="submit()">Agree</button>
+    <ion-content class="margin-top-87">
+        <div>
+            <label class="item item-input">
+                <input type="text" ng-model="user.MName" placeholder="Name">
+            </label>
+            <label class="item item-input">
+                <input type="text" ng-model="user.PhoneNum" placeholder="Phone Number">
+            </label>
+            <div class="list">
+                <label class="item item-input item-select">
+                    <div class="input-label">
+                        Blood Type<b>*</b>
+                    </div>
+                    <select ng-model="user.MBloodType" class="text-center">
+                        <option>O+</option>
+                        <option>A+</option>
+                        <option>B+</option>
+                        <option>AB+</option>
+                        <option selected disabled="disabled">--Type--</option>
+                        <option>O-</option>
+                        <option>A-</option>
+                        <option>B-</option>
+                        <option>AB-</option>
+                    </select>
+                </label>
             </div>
-            <toaster-container toaster-options="{'position-class': 'toast-top-left'}"></toaster-container>
-
         </div>
+        <button class="button button-block button-assertive text-center" ng-click="submit()">Agree</button>
+        <toaster-container toaster-options="{'position-class': 'toast-Bottom-center'}"></toaster-container>
     </ion-content>
 </ion-view>

@@ -14,8 +14,8 @@ namespace Web.Models.Mappers.Imp
             var register = new Register();
             register.MName = form.MName;
             register.MBloodType = form.MBloodType;
-            register.Date = DateTime.Now;
-
+            register.PhoneNum = form.PhoneNum;
+            register.Date = form.Date;
             return register;
         }
 

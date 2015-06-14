@@ -1,4 +1,11 @@
-angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "ngCordova"])
+angular.module("eliteApp",
+    [
+        "ionic",
+        "angular-data.DSCacheFactory",
+        "ngCordova",
+        "ngRoute",
+        "toaster"
+    ])
     .filter('fromNow', function () {
         return function (date) {
             return moment(date).fromNow();
@@ -239,7 +246,7 @@ angular.module("eliteApp", ["ionic", "angular-data.DSCacheFactory", "ngCordova"]
 
         })
         .state('register', {
-            url: "/register",
+            url: "/register/:id",
             templateUrl: "www/app/home/register.html"
         });
     /*.state('home.mainpage', {

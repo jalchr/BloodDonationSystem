@@ -9,6 +9,6 @@ namespace Infrastructure.Repository
 {
     public interface ILoginRepository
     {
-        Boolean Verification(Users form);
+        Users Verification(Users form);
     }
 }
