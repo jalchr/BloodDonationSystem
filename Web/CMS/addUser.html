@@ -1,34 +1,61 @@
 ﻿<link href="/Content/form.css" rel="stylesheet" />
-
-<div ng-controller="AddUserCtrl">
-    <div class="row">
-        <div class="columns small-12 " dir="rtl">
-            <a href="#UserLists" class="button tiny round-5">
-                Back
-            </a>
+<form name="editForm" novalidate>
+    <div ng-controller="AddUserCtrl">
+        <div class="row">
+            <div class="columns small-12 " dir="rtl">
+                <a href="#UserLists" class="button tiny round-5">
+                    Back
+                </a>
+            </div>
         </div>
+        <h1>Add User</h1>
+        <fieldset>
+            <label for="name">User Name:</label>
+            <input type="text" id="name" ng-model="user.UserName" name="name" required>
+            <span style="color:red" ng-show="editForm.name.$dirty && editForm.name.$invalid">
+                <span ng-show="editForm.name.$error.required">User Name Required</span>
+            </span>
+            
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" ng-model="user.Password" name="password" required>
+            <span style="color:red" ng-show="editForm.password.$dirty && editForm.password.$invalid">
+                <span ng-show="editForm.password.$error.required">Password Required</span>
+            </span>
+
+            <label for="hospitalName">Hospital Name:</label>
+            <input type="text" id="hospitalName" ng-model="user.HospitalName" name="hospitalname" required>
+            <span style="color:red" ng-show="editForm.hospitalname.$dirty && editForm.hospitalname.$invalid">
+                <span ng-show="editForm.hospitalname.$error.required">Hospital Name Required</span>
+            </span>
+
+            <label for="hospitalLocation">Hospital Location:</label>
+            <input type="text" id="hospitalLocation" ng-model="user.HospitalLocation" name="hospitalLocation" required>
+            <span style="color:red" ng-show="editForm.hospitalLocation.$dirty && editForm.hospitalLocation.$invalid">
+                <span ng-show="editForm.hospitalLocation.$error.required">Hospital Location Required</span>
+            </span>
+            
+
+            <label for="Role">Role:</label>
+            <input type="text" id="Role" ng-model="user.Role" name="role" required>
+            <span style="color:red" ng-show="editForm.role.$dirty && editForm.role.$invalid">
+                <span ng-show="editForm.role.$error.required">Role Required</span>
+            </span>
+
+            <input type="checkbox" id="development" name="user_interest" ng-model="user.IsAdmin">
+            <label class="light" for="development">IsAdmin</label><br>
+
+        </fieldset>
+        
+        <button class="button tiny" type="submit" ng-click="createUser()" ng-disabled="
+                editForm.name.$dirty && editForm.name.$invalid ||editForm.name.$pristine ||
+                editForm.password.$dirty && editForm.password.$invalid ||editForm.password.$pristine ||
+                editForm.hospitalname.$dirty && editForm.hospitalname.$invalid ||editForm.hospitalname.$pristine ||
+                editForm.hospitalLocation.$dirty && editForm.hospitalLocation.$invalid ||editForm.hospitalLocation.$pristine ||
+                editForm.role.$dirty && editForm.role.$invalid ||editForm.role.$pristine ">
+            save life
+        </button>
+        <!--<button type="submit" ng-click="createUser()">Save</button>-->
     </div>
-    <h1>Add User</h1>
-    <fieldset>
-        <label for="name">Name:</label>
-        <input type="text" id="name" ng-model="user.UserName">
 
-        <label for="password">Password:</label>
-        <input type="password" id="password" ng-model="user.Password">
-
-        <label for="hospitalName">Hospital Name:</label>
-        <input type="text" id="hospitalName" ng-model="user.HospitalName">
-
-
-        <label for="hospitalLocation">Hospital Location:</label>
-        <input type="text" id="hospitalLocation" ng-model="user.HospitalLocation">
-
-        <label for="Role">Role:</label>
-        <input type="text" id="Role" ng-model="user.Role">
-
-        <input type="checkbox" id="development" name="user_interest" ng-model="user.IsAdmin">
-        <label class="light" for="development">IsAdmin</label><br>
-
-    </fieldset>
-    <button type="submit" ng-click="createUser()">Save</button>
-</div>
+</form>

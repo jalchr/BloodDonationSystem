@@ -1,10 +1,10 @@
-﻿var donationApp = angular.module("donationApp", ['ngRoute', 'ngAnimate', 'toaster', "ngSanitize", "ngScrollbar"]);
+﻿var donationApp = angular.module("donationApp", ['ngRoute', 'ngAnimate', 'toaster', "ngSanitize", "ngScrollbar",'ngCookies']);
 
 donationApp.config(["$routeProvider", function ($routeProvider) {
     $routeProvider
         .when('/', {
-            templateUrl: "Index.html",
-            controller: "logctrl"
+            templateUrl: "/CMS/UsersList.html",
+            controller: "AddUserCtrl"
         })
           .when('/UserLists', {
               templateUrl: "/CMS/UsersList.html",
@@ -62,6 +62,7 @@ donationApp.controller("CreateRequestCtrl", function ($scope, $location, $routeP
         $scope.request.UserId = $scope.id;
         $http.post('/api/BloodRequest/PostBloodRequest', $scope.request).
           success(function (data, status, headers, config) {
+              $scope.editForm.$setPristine();
               $scope.request = { BloodType: '', UnitsRequired: '' };
               getAllRequests($scope);
 
@@ -87,9 +88,9 @@ donationApp.controller("CreateRequestCtrl", function ($scope, $location, $routeP
     });
 });
 
-donationApp.controller("EditRequestCtrl", ["$scope", "$filter", "$routeParams", "$http", "$location", "$window", "$timeout", EditRequestCtrl]);
+donationApp.controller("EditRequestCtrl", ["$scope", "$filter", "$routeParams", "$http", "$location", "$window", "$timeout", "toaster", EditRequestCtrl]);
 
-function EditRequestCtrl($scope, $filter, $routeParams, $http, $location, $window, $timeout) {
+function EditRequestCtrl($scope, $filter, $routeParams, $http, $location, $window, $timeout, toaster) {
 
     $scope.id = $routeParams.Id;
 
@@ -99,24 +100,30 @@ function EditRequestCtrl($scope, $filter, $routeParams, $http, $location, $windo
     $scope.$on('scrollbar.show', function () {
         console.log('Scrollbar show');
     });
-
-    $scope.EditRequest = function () {
+    $scope.popfailed = function () {
+        toaster.pop('error', "number of donner cannot be greater than the required", "");
+    };
+    $scope.EditRequest = function() {
         $scope.bloodRequest.UserId = $scope.UserId;
-        $http.put('/api/BloodRequest/EditBloodRequest/' + $scope.id, $scope.bloodRequest)
-            .success(function (data, status, headers, config) {
-                console.log("put BloodRequest ok");
-                getRequest();
-            })
-            .error(function (data, status, headers, config) {
-                console.log("put BloodRequest not ok");
-            });
+        if ($scope.bloodRequest.NumDonator > $scope.bloodRequest.UnitsRequired) {
+            $scope.popfailed();
+        } else {
+            
+            $http.put('/api/BloodRequest/EditBloodRequest/' + $scope.id, $scope.bloodRequest)
+                .success(function(data, status, headers, config) {
+                    console.log("put BloodRequest ok");
+                    getRequest();
+                })
+                .error(function(data, status, headers, config) {
+                    console.log("put BloodRequest not ok");
+                });
+        }
     }
-
     $scope.deletBloodRequest = function (val) {
-
+        $scope.bloodRequest.UserId = $scope.UserId;
         $http.delete('/api/BloodRequest/DeleteBloodRequest/' + val)
             .success(function (data, status, headers, config) {
-                $location.path("/mainmember");
+                $location.path("/membermain/" + $scope.bloodRequest.UserId);
                 console.log("deletepost ok");
             })
             .error(function (data, status, headers, config) {
@@ -220,25 +227,41 @@ function EditUserCtrl($scope, $routeParams, $http, $location, $window) {
 
 /*-------------------------------LogIn section-------------------------*/
 
-donationApp.controller("logctrl", function ($scope, $routeParams, $http, $location, $window, toaster) {
+donationApp.controller("logctrl", function ($scope, $routeParams, $http, $location, $window, toaster, $cookieStore) {
 
     console.log("login ctrl");
     $scope.user = { username: '', password: '' };
-    $scope.notLoggedIn = true;
-    $scope.LoggedIn = false;
+    if ($cookieStore.get('login') != null) {
+        console.log(" cookie was found");
+        $cookieStore.put('login', false);
+        $scope.notLoggedIn = false;
+        $scope.LoggedIn = true;
+    } else {
+
+        console.log("login ctrl");
+        console.log("cookie was not found");
+        /* var favoriteCookie = $cookieStore.get('myFavorite');*/
+
+        $scope.notLoggedIn = true;
+        $scope.LoggedIn = false;
+    }
     $scope.popfailed = function () {
-        toaster.pop('error', "الإسم أو كلمة المرور غير مطابقة", "");
+        toaster.pop('error', "Invalied Username or Password", "");
     };
     console.log("post not ok");
 
     $scope.logverif = function () {
         $http.post('/api/Login/Verif', $scope.user).then(function (result) {
             var loggedResult = result.data;
+            if ($scope.user.username == "" || $scope.user.password == "") {
+                $scope.popfailed();
+            }
             if (loggedResult == null) {
                 $scope.popfailed();
             } else {
-                $scope.LoggedIn = true;
+                $scope.LoggedIn = loggedResult;
                 $scope.notLoggedIn = false;
+                $cookieStore.put('login', true);
                 $scope.HospitalName = loggedResult.HospitalName;
                 $scope.Role = loggedResult.Role;
                 $scope.UserName = loggedResult.UserName;
@@ -254,7 +277,7 @@ donationApp.controller("logctrl", function ($scope, $routeParams, $http, $locati
     }
 
     $scope.logout = function () {
-        // $cookieStore.remove('login');
+        $cookieStore.remove('login');
         $scope.notLoggedIn = true;
         $scope.LoggedIn = false;
     }
