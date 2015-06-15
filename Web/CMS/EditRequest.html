@@ -1,13 +1,14 @@
 ﻿<!--Second Section page side-->
-<div ng-controller="EditRequestCtrl">
-    <div class="row">
-        <div class="columns small-12 " dir="rtl">
-            <a href="#membermain/{{UserId}}" class="button tiny round-5">
-                Back
-            </a>
+<form name="editForm" novalidate>
+    <div ng-controller="EditRequestCtrl">
+        <div class="row">
+            <div class="columns small-12 " dir="rtl">
+                <a href="#membermain/{{UserId}}" class="button tiny round-5">
+                    Back
+                </a>
+            </div>
         </div>
-    </div>
-    <form name="requestForm" novalidate>
+
         <div class="row right-padding-col  margin-bottom-60">
             <!-- <div class="row">
                 <div class="columns small-12">
@@ -18,28 +19,36 @@
                 <div class="columns small-12 ">
                     <div class="row">
                         <div class="small-12 columns">
-                                <h3> {{bloodRequest.BloodType}}</h3> 
+                            <h3> {{bloodRequest.BloodType}}</h3>
                         </div>
                     </div>
                     <div class="row">
                         <div class="columns small-3">Required</div>
                         <div class="columns small-4">
-                            <input type="text" ng-model="bloodRequest.UnitsRequired"/>
+                            <input type="text" ng-model="bloodRequest.UnitsRequired" required name="units" />
+                            <span style="color:red" ng-show="editForm.units.$dirty && editForm.units.$invalid">
+                                <span ng-show="editForm.units.$error.required">Insert the required number</span>
+                            </span>
                         </div>
-
+                        <toaster-container toaster-options="{'position-class': 'toast-top-left'}"></toaster-container>
                         <div class="columns small-2">Donor</div>
                         <div class="columns small-3">
-                            <input type="text" ng-model="bloodRequest.NumDonator" />
+                            <input type="text" ng-model="bloodRequest.NumDonator" required name="type">
+                            <span style="color:red" ng-show="editForm.type.$dirty && editForm.type.$invalid">
+                                <span ng-show="editForm.type.$error.required">Insert the donner number</span>
+                            </span>
                         </div>
                     </div>
                     <div class="row">
                         <div class="columns small-12 ">
                             <div class="row">
                                 <div class="columns small-12" style="text-align: center; margin-top: 10px;">
-                                    <a ng-click="EditRequest()">
-                                        <i class="fi-heart" style="color: red"></i> Save Life
-                                    </a>
-                                    <a href="" ng-click="deletBloodRequest(id)" style="color: black; padding-left: 30px;">
+
+                                    <button class="button tiny" ng-click="EditRequest()" ng-disabled="editForm.units.$dirty && editForm.units.$invalid ||
+editForm.type.$dirty && editForm.type.$invalid ||  editForm.type.$pristine || editForm.units.$pristine ">
+                                        save life
+                                    </button>
+                                    <a ng-click="deletBloodRequest(id)" style="color: black; padding-left: 30px;">
                                         <i class="fi-prohibited"></i> Delete
                                     </a>
                                 </div>
@@ -50,52 +59,53 @@
             </div>
 
         </div>
-    </form>
 
 
-    <div class="scrollme" ng-scrollbar>
-        <form name="listOfrequest" novalidate>
-            <div class="right-padding-col">
-                <div class="scrollme" ng-scrollbar is-bar-shown="barShown" rebuild-on="rebuild:me" rebuild-on-resize>
-                    <div style="margin-right: 20px;">
-                        <div class="small-12 columns " ng-repeat="BloodRequest in dat">
-                            <a href="#EditRequest/{{BloodRequest.Id}}">
-                                <div class="row" style="padding: 5px; border: 1px solid black; margin-bottom: 10px;">
-                                    <div class="small-4 columns">
-                                        <ul class="no-bullet">
-                                            <li>
-                                                <div class="row">
-                                                    <div class="small-6 columns "> Required </div>
-                                                    <div class="small-6 columns ">{{BloodRequest.UnitsRequired}}</div>
+
+        <div class="scrollme" ng-scrollbar>
+            <form name="listOfrequest" novalidate>
+                <div class="right-padding-col">
+                    <div class="scrollme" ng-scrollbar is-bar-shown="barShown" rebuild-on="rebuild:me" rebuild-on-resize>
+                        <div style="margin-right: 20px;">
+                            <div class="small-12 columns " ng-repeat="BloodRequest in dat">
+                                <a href="#EditRequest/{{BloodRequest.Id}}">
+                                    <div class="row" style="padding: 5px; border: 1px solid black; margin-bottom: 10px;">
+                                        <div class="small-4 columns">
+                                            <ul class="no-bullet">
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="small-6 columns "> Required </div>
+                                                        <div class="small-6 columns ">{{BloodRequest.UnitsRequired}}</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="small-6 columns "> Offered </div>
+                                                        <div class="small-6 columns">{{BloodRequest.NumOffered}}</div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="row">
+                                                        <div class="small-6 columns"> Donor </div>
+                                                        <div class="small-6 columns">{{BloodRequest.NumDonator}}</div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                        <div class="small-8 columns">
+                                            <div class="row">
+                                                <div class="columns-12">
+                                                    <h1 class="text-center padding-top-15">{{BloodRequest.BloodType}}</h1>
                                                 </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="small-6 columns "> Offered </div>
-                                                    <div class="small-6 columns">{{BloodRequest.NumOffered}}</div>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <div class="row">
-                                                    <div class="small-6 columns"> Donor </div>
-                                                    <div class="small-6 columns">{{BloodRequest.NumDonator}}</div>
-                                                </div>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="small-8 columns">
-                                        <div class="row">
-                                            <div class="columns-12">
-                                                <h1 class="text-center padding-top-15">{{BloodRequest.BloodType}}</h1>
                                             </div>
                                         </div>
                                     </div>
-                                </div>
-                            </a>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </form>
+            </form>
+        </div>
     </div>
-</div>
+</form>
