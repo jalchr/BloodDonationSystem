@@ -1,0 +1,34 @@
+﻿<link href="/Content/form.css" rel="stylesheet" />
+
+<div ng-controller="AddUserCtrl">
+    <div class="row">
+        <div class="columns small-12 " dir="rtl">
+            <a href="#UserLists" class="button tiny round-5">
+                Back
+            </a>
+        </div>
+    </div>
+    <h1>Add User</h1>
+    <fieldset>
+        <label for="name">Name:</label>
+        <input type="text" id="name" ng-model="user.UserName">
+
+        <label for="password">Password:</label>
+        <input type="password" id="password" ng-model="user.Password">
+
+        <label for="hospitalName">Hospital Name:</label>
+        <input type="text" id="hospitalName" ng-model="user.HospitalName">
+
+
+        <label for="hospitalLocation">Hospital Location:</label>
+        <input type="text" id="hospitalLocation" ng-model="user.HospitalLocation">
+
+        <label for="Role">Role:</label>
+        <input type="text" id="Role" ng-model="user.Role">
+
+        <input type="checkbox" id="development" name="user_interest" ng-model="user.IsAdmin">
+        <label class="light" for="development">IsAdmin</label><br>
+
+    </fieldset>
+    <button type="submit" ng-click="createUser()">Save</button>
+</div>

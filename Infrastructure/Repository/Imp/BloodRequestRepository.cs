@@ -30,6 +30,17 @@ namespace Infrastructure.Repository.Imp
            }
        }
 
+       public BloodRequest[] GetAllRequests()
+       {
+
+           using (var cnn = OpenConnection())
+           {
+               var tab = cnn.GetList<BloodRequest>().OrderByDescending(x => x.Date).ToArray(); 
+               return tab;
+           }
+       }
+
+
        public void DeleteBloodRequest(int val)
        {
            using (var cnn = OpenConnection())
