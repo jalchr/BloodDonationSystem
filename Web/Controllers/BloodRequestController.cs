@@ -34,6 +34,16 @@ namespace Web.Controllers
             var bloodRequests = _bloodRequestRepository.GetRequestByUserId(id);
             return bloodRequests;
         }
+
+
+        [HttpGet]
+        // Get api/default1
+        public IEnumerable<BloodRequest> Getall()
+        {
+            var bloodRequests = _bloodRequestRepository.GetAllRequests();
+            return bloodRequests;
+        }
+
         // GET api/values/5
         [HttpGet]
         public IHttpActionResult Getrequest(int id)

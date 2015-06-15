@@ -1,0 +1,37 @@
+﻿<div ng-controller="AddUserCtrl">
+    <div class="row">
+        <div class="columns small-12 " dir="rtl">
+            <a href="#addUser" class="button tiny round-5">
+                Create User
+            </a>
+        </div>
+    </div>
+    <table>
+        <tr>
+            <th>Id</th>
+            <th>User Name</th>
+            <th>Password</th>
+            <th>Role</th>
+            <th>IsAdmin</th>
+            <th>hospital Name</th>
+            <th>hospital location</th>
+            <th>Delete</th>
+        </tr>
+        <tr ng-repeat="user in data">
+            <td>
+                <a href="#/EditUser/{{user.Id}}">{{user.Id}}</a>
+            </td>
+            <td>{{user.UserName}}</td>
+            <td>{{user.Password}}</td>
+            <td>{{user.Role}}</td>
+            <td>{{user.IsAdmin}}</td>
+            <td>{{user.HospitalName}}</td>
+            <td>{{user.HospitalLocation}}</td>
+            <td>
+                <a href="" ng-click="deleteUser(user.Id)" style="color: black">
+                    <i class="fi-prohibited"></i> Delete
+                </a>
+            </td>
+        </tr>
+    </table>
+</div>

@@ -1,0 +1,89 @@
+﻿<div ng-controller="CreateRequestCtrl">
+    <div class="row">
+        <div class="columns small-12">
+            <form name="requestForm" novalidate>
+                <div class="row right-padding-col top-padding-col2 ">
+                    <!-- <div class="row">
+                        <div class="columns small-12">
+                            <i class="fi-alert"></i> This request will delivered soon to 300000 donors
+                        </div>
+                    </div>-->
+                    <div class="row panel callout radius ">
+                        <div class="columns small-8">
+                            <div class="row">
+                                <div class="columns small-3">Required</div>
+                                <div class="columns small-4">
+                                    <input type="text" ng-model="request.UnitsRequired" />
+                                </div>
+
+                                <div class="columns small-2">Type</div>
+                                <div class="columns small-3">
+                                    <select ng-model="request.BloodType">
+                                        <option>A+</option>
+                                        <option>A-</option>
+                                        <option>B+</option>
+                                        <option>B-</option>
+                                        <option>O+</option>
+                                        <option>O-</option>
+                                        <option>AB+</option>
+                                        <option>AB-</option>
+                                    </select>
+                                </div>
+                            </div>
+
+                        </div>
+                        <div class="columns small-4" style="text-align: center; margin-top: 10px;">
+                            <a ng-click="createRequest()">
+                                <i class="fi-heart" style="color: red"></i> Save Life
+                            </a>
+                        </div>
+                    </div>
+
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <!--<div class="scrollme" ng-scrollbar is-bar-shown="barShown">-->
+
+    <div class="row right-padding-col top-padding-col2">
+        <div class="scrollme" ng-scrollbar is-bar-shown="barShown" rebuild-on="rebuild:me" rebuild-on-resize>
+            <div class=" small-6 columns end" ng-repeat="BloodRequest in dat">
+                <a href="#EditRequest/{{BloodRequest.Id}}">
+
+                    <div class="row" style="padding: 5px">
+                        <div style="border: 1px solid black; float: left; margin-bottom: 10px;">
+                            <div class="small-6 columns">
+                                <ul class="no-bullet">
+                                    <li>
+                                        <div class="row">
+                                            <div class="small-8 columns "> Required </div>
+                                            <div class="small-4 columns">{{BloodRequest.UnitsRequired}}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="small-8 columns "> Offered </div>
+                                            <div class="small-4 columns">{{BloodRequest.NumOffered}}</div>
+                                        </div>
+                                    </li>
+                                    <li>
+                                        <div class="row">
+                                            <div class="small-8 columns"> Donor </div>
+                                            <div class="small-4 columns">{{BloodRequest.NumDonator}}</div>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="small-6 columns">
+                                <h1 class="text-center padding-top-15"> {{BloodRequest.BloodType}}</h1>
+                            </div>
+
+                        </div>
+
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
