@@ -15,6 +15,13 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "BloodDonationDb", "BloodDon
 EndProject
 Project("{262852C6-CD72-467D-83FE-5EEB1973A190}") = "App", "App\App.jsproj", "{E3831D77-FA05-44DA-B5B4-E21C1D9BFBEC}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = ".nuget", ".nuget", "{B5E39B58-7887-4529-8300-6837DEFF788F}"
+	ProjectSection(SolutionItems) = preProject
+		.nuget\NuGet.Config = .nuget\NuGet.Config
+		.nuget\NuGet.exe = .nuget\NuGet.exe
+		.nuget\NuGet.targets = .nuget\NuGet.targets
+	EndProjectSection
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Android = Debug|Android
