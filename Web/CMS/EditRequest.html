@@ -45,7 +45,7 @@
                                 <div class="columns small-12" style="text-align: center; margin-top: 10px;">
 
                                     <button class="button tiny" ng-click="EditRequest()" ng-disabled="editForm.units.$dirty && editForm.units.$invalid ||
-editForm.type.$dirty && editForm.type.$invalid ||  editForm.type.$pristine || editForm.units.$pristine ">
+editForm.type.$dirty && editForm.type.$invalid ||  editForm.units.$pristine && editForm.type.$pristine  ">
                                         save life
                                     </button>
                                     <a ng-click="deletBloodRequest(id)" style="color: black; padding-left: 30px;">

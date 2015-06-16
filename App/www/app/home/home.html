@@ -28,16 +28,22 @@
                         <div class="row">
                             <div class="col text-center">
                                 <h2 class="title">
-                                    <b>{{group.HospitalName}}</b>
+                                    <b><!--{{group.HospitalName}}--></b>
                                 </h2>
-                                <h3>{{group.HospitalLocation}}</h3>
+                                <h3><!--{{group.HospitalLocation}}--></h3>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <a href="#/register/{{group.Id}}">
+
+
+                                <a href="#/register/{{group.Id}}" ng-if="vm.isRegistered==false" >
                                     <button class="button button-light icon ion-thumbsup">Yes, I Donate</button>
                                 </a>
+                                <button class="button button-light icon ion-thumbsup" ng-if="vm.isRegistered==true" > Donate</button>
+
+                                
+                                
                             </div>
                         </div>
                         <div class="row">

@@ -1,5 +1,5 @@
 ﻿<link href="/Content/form.css" rel="stylesheet" />
-<form name="editForm" novalidate>
+<form name="editForm" novalidate autocomplete="off">
     <div ng-controller="AddUserCtrl">
         <div class="row">
             <div class="columns small-12 " dir="rtl">
@@ -15,7 +15,7 @@
             <span style="color:red" ng-show="editForm.name.$dirty && editForm.name.$invalid">
                 <span ng-show="editForm.name.$error.required">User Name Required</span>
             </span>
-            
+
 
             <label for="password">Password:</label>
             <input type="password" id="password" ng-model="user.Password" name="password" required>
@@ -34,7 +34,7 @@
             <span style="color:red" ng-show="editForm.hospitalLocation.$dirty && editForm.hospitalLocation.$invalid">
                 <span ng-show="editForm.hospitalLocation.$error.required">Hospital Location Required</span>
             </span>
-            
+
 
             <label for="Role">Role:</label>
             <input type="text" id="Role" ng-model="user.Role" name="role" required>
@@ -46,14 +46,14 @@
             <label class="light" for="development">IsAdmin</label><br>
 
         </fieldset>
-        
+
         <button class="button tiny" type="submit" ng-click="createUser()" ng-disabled="
                 editForm.name.$dirty && editForm.name.$invalid ||editForm.name.$pristine ||
                 editForm.password.$dirty && editForm.password.$invalid ||editForm.password.$pristine ||
                 editForm.hospitalname.$dirty && editForm.hospitalname.$invalid ||editForm.hospitalname.$pristine ||
                 editForm.hospitalLocation.$dirty && editForm.hospitalLocation.$invalid ||editForm.hospitalLocation.$pristine ||
                 editForm.role.$dirty && editForm.role.$invalid ||editForm.role.$pristine ">
-            save life
+            Create User
         </button>
         <!--<button type="submit" ng-click="createUser()">Save</button>-->
     </div>

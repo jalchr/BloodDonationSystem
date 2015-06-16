@@ -61,10 +61,11 @@ namespace Web.Controllers
         }
         // POST api/default1
         [HttpPost]
-        public void RegisterMember([FromBody]RegisterForm user)
+        public Register RegisterMember([FromBody]RegisterForm user)
         {
             var map = _registerMapper.Map(user);
             _registerRepository.InsertRegister(map);
+            return map;
         }
 
         public void Deletenews([FromUri] int id)

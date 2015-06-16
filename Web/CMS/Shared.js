@@ -62,7 +62,7 @@ donationApp.controller("CreateRequestCtrl", function ($scope, $location, $routeP
         $scope.request.UserId = $scope.id;
         $http.post('/api/BloodRequest/PostBloodRequest', $scope.request).
           success(function (data, status, headers, config) {
-              $scope.editForm.$setPristine();
+             $scope.editForm.$setPristine();
               $scope.request = { BloodType: '', UnitsRequired: '' };
               getAllRequests($scope);
 

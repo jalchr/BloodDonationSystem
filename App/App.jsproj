@@ -1080,6 +1080,7 @@
     <Content Include="www\lib\lodash\dist\lodash.underscore.js" />
     <Content Include="www\lib\lodash\dist\lodash.underscore.min.js" />
     <Content Include="www\lib\lodash\LICENSE.txt" />
+    <Content Include="www\lib\ngStorage.js" />
     <Content Include="www\pic\aboutusicon.jpg" />
     <Content Include="www\pic\articleicon.jpg" />
     <Content Include="www\pic\banner.jpg" />

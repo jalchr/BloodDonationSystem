@@ -2,9 +2,9 @@
 <Project ToolsVersion="12.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <PropertyGroup>
     <ShowAllFiles>false</ShowAllFiles>
-    <ReferenceCachePath>C:\Users\m.ansari\AppData\Local\Temp\fostw0ki_App_refcache</ReferenceCachePath>
+    <ReferenceCachePath>C:\Users\Hasan\AppData\Local\Temp\hgqvpu4n_App_refcache</ReferenceCachePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Android'">
-    <DebuggerFlavor>RippleNexus7</DebuggerFlavor>
+    <DebuggerFlavor>RippleNexus</DebuggerFlavor>
   </PropertyGroup>
 </Project>

@@ -4,7 +4,8 @@ angular.module("eliteApp",
         "angular-data.DSCacheFactory",
         "ngCordova",
         "ngRoute",
-        "toaster"
+        "toaster",
+        "ngStorage"
     ])
     .filter('fromNow', function () {
         return function (date) {
