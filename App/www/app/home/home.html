@@ -12,7 +12,15 @@
             <div ng-repeat="group in vm.bloodRequest">
                 <ion-item class="item-assertive" ng-click="toggleGroup(group)" ng-class="{active:isGroupShown(group)}">
                     <div class="row">
-                        <div class="col">                      
+                        <div class="small-12 columns ">
+                            <h2 class="title" style="text-align: center;">
+                                <b>{{group.HospitalName}}</b>
+                            </h2>
+                        </div>
+                    </div>
+                    <div class="row">
+
+                        <div class="col">
                             {{group.BloodType}}
                         </div>
                         <div class="col col-center">
@@ -27,9 +35,7 @@
                         </div>
                         <div class="row">
                             <div class="col text-center">
-                                <h2 class="title">
-                                    <b><!--{{group.HospitalName}}--></b>
-                                </h2>
+
                                 <h3><!--{{group.HospitalLocation}}--></h3>
                             </div>
                         </div>
@@ -37,13 +43,13 @@
                             <div class="col text-center">
 
 
-                                <a href="#/register/{{group.Id}}" ng-if="vm.isRegistered==false" >
+                                <a href="#/register/{{group.Id}}" ng-if="vm.isRegistered==false">
                                     <button class="button button-light icon ion-thumbsup">Yes, I Donate</button>
                                 </a>
-                                <button class="button button-light icon ion-thumbsup" ng-if="vm.isRegistered==true" > Donate</button>
+                                <button class="button button-light icon ion-thumbsup" ng-if="vm.isRegistered==true" ng-click="donate(group.Id)"> Donate</button>
 
-                                
-                                
+
+
                             </div>
                         </div>
                         <div class="row">

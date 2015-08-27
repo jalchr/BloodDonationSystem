@@ -59,9 +59,6 @@
     <Folder Include="Properties" />
   </ItemGroup>
   <ItemGroup>
-    <Build Include="Articles.sql" />
-    <Build Include="Lectures.sql" />
-    <Build Include="News.sql" />
     <Build Include="Push.sql" />
     <Build Include="Users.sql" />
     <Build Include="MemberRegister.sql" />

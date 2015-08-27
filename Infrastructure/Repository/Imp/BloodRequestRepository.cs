@@ -33,10 +33,23 @@ namespace Infrastructure.Repository.Imp
        public BloodRequest[] GetAllRequests()
        {
 
+           var query =
+               "Select  b.Id as BID,b.UserID as UserId,b.BloodType as BloodType,b.Date as Date,b.UnitsRequired as UnitsRequired ,b.NumOffered as NumOffered,b.NumDonator as NumDonator , u.HospitalName from BloodRequest b inner join Users u on u.Id = b.UserId Order By Date Desc ";
+
            using (var cnn = OpenConnection())
            {
-               var tab = cnn.GetList<BloodRequest>().OrderByDescending(x => x.Date).ToArray(); 
-               return tab;
+               return cnn.Query(query).Select(x => new BloodRequest()
+               {
+                   UserId = x.UserId,
+                   Date = x.Date,
+                   Id = x.BID,
+                   BloodType = x.BloodType,
+                   NumOffered = x.NumOffered,
+                   NumDonator = x.NumDonator,
+                   HospitalName = x.HospitalName,
+                   UnitsRequired = x.UnitsRequired
+
+               }).ToArray();
            }
        }
 

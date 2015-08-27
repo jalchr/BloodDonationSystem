@@ -1,9 +1,12 @@
-﻿(function () {
-    'use strict';
-    angular.module('eliteApp').controller('BloodRequestCtrl', ['$http', 'apictrl', '$scope', '$window','DSCacheFactory', bloodRequestCtrl]);
+﻿var baseService = "http://localhost:17967/api/";
 
-    function bloodRequestCtrl($http, apictrl, $scope, $window, DSCacheFactory) {
+(function () {
+    'use strict';
+    angular.module('eliteApp').controller('BloodRequestCtrl', ['$http', 'apictrl', '$scope', '$window','$location','DSCacheFactory', bloodRequestCtrl]);
+
+    function bloodRequestCtrl($http, apictrl, $scope, $window,$location, DSCacheFactory) {
         var vm = this;
+
         var cache = DSCacheFactory.get("RegisterCache");
         vm.loadList = function (forceRefresh) {
             apictrl.getrqust(forceRefresh).then(function (data) {
@@ -22,6 +25,19 @@
         };
         vm.loadList(false);
 
+
+        $scope.donate = function (id) {
+            //$http.put('/api/Login/EditUser/' + $scope.id, $scope.user).
+            $http.post(baseService + "BloodRequest/PutRegister/" + id).success(function (data) {
+                $location.path("/home");
+                console.log("received one lecture via http ", data, status);
+            })
+           .error(function () {
+               console.log("error get one lecture");
+
+           });
+          
+        }
         /*
      * if given group is the selected group, deselect it
      * else, select the given group

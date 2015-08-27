@@ -14,7 +14,7 @@ using Web.Models.Mappers.Imp;
 
 namespace Web.Controllers
 {
-    [EnableCors(origins: "http://Hasan-PC:17967", headers: "*", methods: "*")]
+    //[EnableCors(origins: "*", headers: "*", methods: "*")]
     public class BloodRequestController : ApiController
     {
         private BloodRequestRepository _bloodRequestRepository;
@@ -110,6 +110,13 @@ namespace Web.Controllers
 
                         _bloodRequestRepository.UpdateBloodRequest(map);
              
+        }
+        [HttpPost]
+        public void PutRegister([FromUri]int id)
+        {
+            var n = _bloodRequestRepository.GetBloodRequest(id);
+            n.NumDonator ++;
+            _bloodRequestRepository.UpdateBloodRequest(n);
         }
     }
 }

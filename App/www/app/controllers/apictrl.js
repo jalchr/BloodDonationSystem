@@ -1,3 +1,6 @@
+var local = "http://localhost:17967/api/";
+var online = "";
+
 (function () {
     'use strict';
     angular.module('eliteApp').factory('apictrl', ['$ionicLoading', '$stateParams', '$http', '$q', 'DSCacheFactory', apictrl]);
@@ -82,8 +85,6 @@
         // ===============================================================
 
         var vm = this;
-        var local = "http://Hasan-PC:17967/api/";
-        var online = "";
 
         function getmsgs(forceRefresh) {
             if (typeof forceRefresh === "undefined") { forceRefresh = false; }

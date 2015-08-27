@@ -1,4 +1,6 @@
-﻿(function() {
+﻿var serviceBase = "http://localhost:17967/api/";
+
+(function () {
     'use strict';
     angular.module('eliteApp').controller('RegisterCtrl', ['$http', 'apictrl', '$scope', '$localStorage', '$window', 'toaster','$location', '$stateParams', 'DSCacheFactory', registerCtrl]);
 
@@ -7,14 +9,13 @@
 
         self.RegisterCache = DSCacheFactory.get("RegisterCache");
         /*----------------SubmitRegister---------------------*/
-        var local = "http://Hasan-PC:17967/api/";
         var cachekey = "RegisterCache";
         $scope.user = {};
         $scope.requestId = $stateParams.id;
         $scope.submit = function() {
             $http({
                 method: 'POST',
-                url: local + 'Register/RegisterMember',
+                url: serviceBase + 'Register/RegisterMember',
                 headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
                 transformRequest: function(obj) {
                     var str = [];

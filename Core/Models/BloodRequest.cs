@@ -18,5 +18,7 @@ namespace Core.Models
         public DateTime Date { set; get; }
         public int UserId { get; set; }
 
+        public string HospitalName { get;set; }
+
     }
 }

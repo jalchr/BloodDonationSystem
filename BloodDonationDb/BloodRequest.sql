@@ -6,5 +6,6 @@
     [NumOffered] INT NULL, 
     [NumDonator] INT NULL, 
     [Date] DATETIME NULL, 
-    [UserId] INT NOT NULL
+    [UserId] INT NOT NULL, 
+    [HospitalName] NCHAR(100) NULL
 )

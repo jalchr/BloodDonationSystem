@@ -14,7 +14,7 @@ using Web.Models.Mappers.Imp;
 
 namespace Web.Controllers
 {
-      [EnableCors(origins: "http://Hasan-PC:17967", headers: "*", methods: "*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RegisterController : ApiController
     {
         private IRegisterRepository _registerRepository;
