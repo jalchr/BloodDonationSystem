@@ -1,5 +1,6 @@
 angular.module("BloodDonationApp", [
     "ionic",
+    
  
 ])
 
@@ -34,7 +35,7 @@ angular.module("BloodDonationApp", [
     })
 
     .state('home.requestDetails', {
-        url: "/Request-Details",
+        url: "/Request-Details/:id",
         view: {
             "mainContent": {
                 templateUrl: "templates/requestDetails.html"

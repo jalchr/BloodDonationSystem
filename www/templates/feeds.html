@@ -1,9 +1,35 @@
-﻿<!DOCTYPE html>
-<html>
-<head>
-    <title></title>
-</head>
-<body>
-    <div>Content goes here.</div>
-</body>
-</html>
+﻿<ion-view ng-controller="FeedsCtrl as vm">
+    <ion-content class="has-header">
+        
+            <div class="card" ng-repeat="requests in vm.feeds">
+                <div class="item item divider" ng-click="toggleGroup(requests)"
+                     ng-class="{active: isGroupShown(requests)}">
+                    <div class="row">
+                        <div class="col">
+                            {{requests.type}}
+                        </div>
+                        <div class="col">
+                            {{requests.unitNb}} Units
+                        </div>
+                    </div>
+                </div>
+                <div class="item-accordion" 
+                     
+                          ng-show="isGroupShown(requests)">
+                    <div class="row">
+                        <div class="col">
+                            {{requests.HospName}}
+                        </div>
+                        <div class="col">
+                            {{requests.Hosplocation}}
+                        </div>
+                        <div class="col">
+                            {{requests.Hosplocation}}
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        
+    </ion-content>
+</ion-view>
