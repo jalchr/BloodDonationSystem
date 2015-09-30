@@ -4,7 +4,7 @@
             <div class="card" ng-repeat="requests in vm.feeds">
                 <div class="item item divider" ng-click="toggleGroup(requests)"
                      ng-class="{active: isGroupShown(requests)}">
-                    <div class="row">
+                    <div class="row row-bottom">
                         <div class="col">
                             {{requests.type}}
                         </div>
@@ -13,23 +13,29 @@
                         </div>
                     </div>
                 </div>
-                <div class="item-accordion" 
-                     
-                          ng-show="isGroupShown(requests)">
+                <div class="item-accordion"
+                     ng-show="isGroupShown(requests)">
                     <div class="row">
-                        <div class="col">
-                            {{requests.HospName}}
+                        <div class="col-top">
+                            Since 7 s{{requests.Date}}
                         </div>
-                        <div class="col">
+                        <div class="col col-center col-50 col-offset-8">
+                            <br />{{requests.HospName}}
+                            <br />
                             {{requests.Hosplocation}}
                         </div>
-                        <div class="col">
-                            {{requests.Hosplocation}}
+                        <div class="col col-bottom">
+                            <a class="item item-icon-right">
+                                <div class="row">
+                                    <i class="ion-icon ion-pinpoint "></i>
+                                </div>
+                                <div class="row">
+                                    {{requests.HospDistance}}4km
+                                </div>
+                           </a>
                         </div>
                     </div>
-                </div>
-
-            </div>
-        
+                 </div> 
+              </div>
     </ion-content>
 </ion-view>

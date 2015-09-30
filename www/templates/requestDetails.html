@@ -1,37 +1,41 @@
+
 <ion-view ng-controller="FeedsCtrl as vm">
     <ion-content class="has-header">
-        
-            <div class="card" ng-repeat="requests in vm.feeds">
-                <div class="item item divider" ng-click="toggleGroup(requests)"
-                     ng-class="{active: isGroupShown(requests)}">
-                    <div class="row">
-                        <div class="col">
-                            {{requests.type}}
-                        </div>
-                        <div class="col">
-                            {{requests.unitNb}} Units
-                        </div>
+        <div class="card">
+            <div class="item">
+                <div class="row">
+                    <div class="col">
+                        {{requests.type}}
+                    </div>
+                    <div class="col">
+                        {{requests.unitNb}} Units
                     </div>
                 </div>
-                <div class="item-accordion" 
-                          ui-sref="home.requestDetails"
-                          ng-show="isGroupShown(requests)">
-                    
-                        <div class="row">
-                            <div class="col">
-                                {{requests.HospName}}
-                            </div>
-                            <div class="col">
-                                {{requests.Hosplocation}}
-                            </div>
-                            <div class="col">
-                                4 Km Away
-                            </div>
-                        </div>
-                    
+                <div class="row">
+                    <div class="col">
+                        {{requests.HospName}}
+                    </div>
+                    <div class="col">
+                        {{requests.Hosplocation}}
+                    </div>
+                    <div class="col">
+                        4 Km Away
+                    </div>
                 </div>
 
+                <button class="button button-block button-positive">
+                    Yes, I donate <i class="ion-icon ion-thumbsup"></i>
+                </button>
+                <label>
+                    4/5 <i class="ion-icon ion-battery-half"></i>
+                </label>
+                <div class="title">
+                    <h3>
+                        Last time I'd donated was since<br /> 4 months
+                        <i class="ion-icon ion-checkmark-round"></i>
+                    </h3>
+                </div>
             </div>
-        
+        </div>
     </ion-content>
 </ion-view>
