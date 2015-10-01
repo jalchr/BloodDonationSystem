@@ -42,6 +42,14 @@ angular.module("BloodDonationApp", [
             }
         }
     })
+        .state('home.ClientRegister', {
+            url: "/Client-Register/:id",
+            view: {
+                "mainContent": {
+                    templateUrl: "templates/ClientRegister.html"
+                }
+            }
+        })
 
     .state('home.settings', {
         url: "/settings",

@@ -5,5 +5,6 @@
     [ClientPhone] NCHAR(10) NULL, 
     [ClientPhoneNb] NCHAR(10) NULL, 
     [ClientLocation] NCHAR(10) NULL, 
-    [ClientRegistration] NCHAR(10) NULL
+    [ClientRegistration] NCHAR(10) NULL, 
+    [ClientBloodType] NCHAR(10) NULL
 )
